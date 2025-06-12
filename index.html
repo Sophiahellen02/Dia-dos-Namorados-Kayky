@@ -48,7 +48,7 @@
     }
 
     .carrossel {
-       position: relative;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,15 +62,20 @@
     }
 
     .carrossel img {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 15px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     .carrossel img.ativa {
-      display: block;
+      opacity: 1;
+      z-index: 1;
     }
 
     .secret-btn {
@@ -130,7 +135,6 @@
       color: #cc0066;
     }
 
-    /* Corações caindo */
     .falling-heart {
       position: fixed;
       top: -50px;
@@ -150,14 +154,14 @@
   <div class="card">
     <div class="heart">❤️</div>
     <h1>Feliz Dia dos Namorados!</h1>
-    <p>Para o amor da minha vida,<p>
-        <p>Esse presente é apenas um gesto simples perto de tudo o que você significa pra mim.
-            Cada detalhe foi escolhido com carinho, pensando no seu sorriso, no seu jeito, e no quanto você é especial.</p>
-        <p>Você é a melhor parte dos meus dias, a razão do meu sorriso e a certeza mais bonita que carrego no coração. 
-        Sou grato por cada momento ao seu lado, por cada riso compartilhado e por todo amor que existe entre nós.</p>
-        <p>Que esse presente te lembre do quanto eu te amo hoje, amanhã e para sempre.</p>
+    <p>Para o amor da minha vida,</p>
+    <p>Esse presente é apenas um gesto simples perto de tudo o que você significa pra mim.
+      Cada detalhe foi escolhido com carinho, pensando no seu sorriso, no seu jeito, e no quanto você é especial.</p>
+    <p>Você é a melhor parte dos meus dias, a razão do meu sorriso e a certeza mais bonita que carrego no coração. 
+      Sou grato por cada momento ao seu lado, por cada riso compartilhado e por todo amor que existe entre nós.</p>
+    <p>Que esse presente te lembre do quanto eu te amo hoje, amanhã e para sempre.</p>
     <p>Com todo meu amor, Kayky.❤️</p>
-    
+
     <!-- Carrossel de imagens -->
     <div class="carrossel">
       <img src="foto1.1.jpeg" alt="Nossa foto 1" class="ativa">
@@ -166,17 +170,17 @@
       <img src="foto4.1.jpeg" alt="Nossa foto 4">
       <img src="foto5.1.jpeg" alt="Nossa foto 5">
     </div>
-    
-    <p><em>Esse botão guarda um pedacinho do meu <strong>amor</strong> por você.</em><br></p>
+
+    <p><em>Esse botão guarda um pedacinho do meu <strong>amor</strong> por você.</em></p>
 
     <button class="secret-btn" onclick="mostrarCampoSenha()">Clica com carinho. 💌!</button>
-    
+
     <div class="password-container" id="passwordContainer">
       <input type="password" class="password-input" id="passwordInput" placeholder="Digite a senha" maxlength="4">
       <button class="submit-btn" onclick="verificarSenha()">OK</button>
       <div class="password-hint">Dica: Nossa data especial.</div>
     </div>
-    
+
     <div class="secret-message" id="mensagemSegredo">
       <p>Oi, meu amor!</p>
       <p>Você clicou… e agora tá aqui, lendo isso. Só queria aproveitar esse momento pra te lembrar o quanto você é especial pra mim. 
@@ -186,7 +190,6 @@
   </div>
 
   <script>
-    // Carrossel de imagens
     function iniciarCarrossel() {
       const imagens = document.querySelectorAll('.carrossel img');
       let indexAtual = 0;
@@ -195,10 +198,9 @@
         imagens[indexAtual].classList.remove('ativa');
         indexAtual = (indexAtual + 1) % imagens.length;
         imagens[indexAtual].classList.add('ativa');
-      }, 5000); // Muda a cada 5 segundos
+      }, 4000); // troca a cada 5 segundos
     }
 
-    // Senha secreta
     function mostrarCampoSenha() {
       document.getElementById('passwordContainer').style.display = 'block';
       document.querySelector('.secret-btn').style.display = 'none';
@@ -222,7 +224,6 @@
       mensagem.style.display = 'block';
     }
 
-    // Corações caindo
     function criarCoracao() {
       const heart = document.createElement('div');
       heart.classList.add('falling-heart');
@@ -236,7 +237,6 @@
       }, 6000);
     }
 
-    // Iniciar tudo quando a página carregar
     window.onload = function() {
       iniciarCarrossel();
       setInterval(criarCoracao, 300);

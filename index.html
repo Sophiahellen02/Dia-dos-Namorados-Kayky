@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Dia dos Namorados 💘</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffccd5, #ffe5ec);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #b30059;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    .heart {
+      font-size: 60px;
+      animation: pulse 1s infinite;
+      color: red;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .card {
+      background-color: #fff0f5;
+      border: 2px solid #ff99cc;
+      padding: 30px;
+      border-radius: 20px;
+      display: inline-block;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .carrossel {
+       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      background-color: #fff;
+    }
+
+    .carrossel img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .carrossel img.ativa {
+      display: block;
+    }
+
+    .secret-btn {
+      background-color: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 25px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .secret-btn:hover {
+      background-color: #e60073;
+    }
+
+    .secret-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #8b005f;
+    }
+
+    .password-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .password-input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #ff99cc;
+      font-size: 1em;
+      width: 150px;
+      text-align: center;
+    }
+
+    .submit-btn {
+      background-color: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #e60073;
+    }
+
+    .password-hint {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #cc0066;
+    }
+
+    /* Corações caindo */
+    .falling-heart {
+      position: fixed;
+      top: -50px;
+      color: red;
+      font-size: 24px;
+      animation: fall 6s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Feliz Dia dos Namorados!</h1>
+    <p>Para o amor da minha vida,<p>
+        <p>Esse presente é apenas um gesto simples perto de tudo o que você significa pra mim.
+            Cada detalhe foi escolhido com carinho, pensando no seu sorriso, no seu jeito, e no quanto você é especial.</p>
+        <p>Você é a melhor parte dos meus dias, a razão do meu sorriso e a certeza mais bonita que carrego no coração. 
+        Sou grato por cada momento ao seu lado, por cada riso compartilhado e por todo amor que existe entre nós.</p>
+        <p>Que esse presente te lembre do quanto eu te amo hoje, amanhã e para sempre.</p>
+    <p>Com todo meu amor, Kayky.❤️</p>
+    
+    <!-- Carrossel de imagens -->
+    <div class="carrossel">
+      <img src="foto1.1.jpeg" alt="Nossa foto 1" class="ativa">
+      <img src="foto2.1.jpeg" alt="Nossa foto 2">
+      <img src="foto3.1.jpeg" alt="Nossa foto 3">
+      <img src="foto4.1.jpeg" alt="Nossa foto 4">
+      <img src="foto5.1.jpeg" alt="Nossa foto 5">
+    </div>
+    
+    <p><em>Esse botão guarda um pedacinho do meu <strong>amor</strong> por você.</em><br></p>
+
+    <button class="secret-btn" onclick="mostrarCampoSenha()">Clica com carinho. 💌!</button>
+    
+    <div class="password-container" id="passwordContainer">
+      <input type="password" class="password-input" id="passwordInput" placeholder="Digite a senha" maxlength="4">
+      <button class="submit-btn" onclick="verificarSenha()">OK</button>
+      <div class="password-hint">Dica: Nossa data especial.</div>
+    </div>
+    
+    <div class="secret-message" id="mensagemSegredo">
+      Se o amor tivesse um rosto, seria o seu.
+      Se tivesse um lar, seria o nosso abraço.<br>
+    </div>
+  </div>
+
+  <script>
+    // Carrossel de imagens
+    function iniciarCarrossel() {
+      const imagens = document.querySelectorAll('.carrossel img');
+      let indexAtual = 0;
+
+      setInterval(() => {
+        imagens[indexAtual].classList.remove('ativa');
+        indexAtual = (indexAtual + 1) % imagens.length;
+        imagens[indexAtual].classList.add('ativa');
+      }, 5000); // Muda a cada 5 segundos
+    }
+
+    // Senha secreta
+    function mostrarCampoSenha() {
+      document.getElementById('passwordContainer').style.display = 'block';
+      document.querySelector('.secret-btn').style.display = 'none';
+    }
+
+    function verificarSenha() {
+      const senhaCorreta = "2811";
+      const senhaInserida = document.getElementById('passwordInput').value;
+
+      if (senhaInserida === senhaCorreta) {
+        document.getElementById('passwordContainer').style.display = 'none';
+        revelarMensagem();
+      } else {
+        alert("Senha incorreta! Tente novamente.");
+        document.getElementById('passwordInput').value = '';
+      }
+    }
+
+    function revelarMensagem() {
+      const mensagem = document.getElementById('mensagemSegredo');
+      mensagem.style.display = 'block';
+    }
+
+    // Corações caindo
+    function criarCoracao() {
+      const heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    // Iniciar tudo quando a página carregar
+    window.onload = function() {
+      iniciarCarrossel();
+      setInterval(criarCoracao, 300);
+    };
+  </script>
+</body>
+</html>

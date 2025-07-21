@@ -29,13 +29,9 @@ Este projeto, desenvolvido em linguagem C, tem como objetivo verificar duplicata
 
 ## 2.1 - Discentes
 
-- **Nomes:**
-  - Sophia Hellen Pires da Silveira [Sophia Hellen](https://github.com/Sophiahellen02)
-  - Antonio Andson de Oliveira Rocha
-  - Levi Filgueira
-- **GitHub:**
-  - 
-  - [Antonio Andson](https://github.com/Andyn-1307)
+- **Nomes e GitHub:**
+  - [Sophia Hellen Pires da Silveira](https://github.com/Sophiahellen02)
+  - [Antonio Andson de Oliveira Rocha](https://github.com/Andyn-1307)
   - [Levi Filgueira](https://github.com/Levifc)
 
 ## 2.2 - Docente
